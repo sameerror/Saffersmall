@@ -27,6 +27,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.MySSLSocketFactory;
 import com.loopj.android.http.RequestParams;
+import com.nurakanbpo.saffersmall.adapters.SearchListAdapter;
 import com.nurakanbpo.saffersmall.adapters.SimpleListAdapter;
 
 public class SearchableActivity extends ActionBarActivity {
@@ -86,7 +87,7 @@ public class SearchableActivity extends ActionBarActivity {
 								JSONArray resultArray = response
 										.getJSONArray("result");
 								parsedAdsData = parseAdsData(resultArray);
-								SimpleListAdapter adapter = new SimpleListAdapter(
+								SearchListAdapter adapter = new SearchListAdapter(
 										SearchableActivity.this, parsedAdsData);
 								resultListView.setAdapter(adapter);
 							} catch (JSONException e) {
@@ -104,7 +105,7 @@ public class SearchableActivity extends ActionBarActivity {
 								JSONArray resultArray = errorResponse
 										.getJSONArray("result");
 								parsedAdsData = parseAdsData(resultArray);
-								SimpleListAdapter adapter = new SimpleListAdapter(
+								SearchListAdapter adapter = new SearchListAdapter(
 										SearchableActivity.this, parsedAdsData);
 								resultListView.setAdapter(adapter);
 							} catch (JSONException e) {

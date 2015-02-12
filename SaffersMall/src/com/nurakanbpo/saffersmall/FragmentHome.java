@@ -39,7 +39,6 @@ public class FragmentHome extends Fragment {
 	private List<List<HashMap<String, String>>> totalList = new ArrayList<List<HashMap<String, String>>>();
 	private int numItems;
 	private List<String> title = new ArrayList<String>();
-	// test alloo chiura
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
