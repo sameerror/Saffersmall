@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Theme.MyTheme" parent="Theme.AppCompat">
+
+        <!-- Set AppCompat’s actionBarStyle -->
+        <item name="actionBarStyle">@style/MyActionBarStyle</item>
+
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">#39a85f</item>
+        <item name="colorPrimaryDark">#277542</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/holo_green_dark</item>
+        <item name="colorControlHighlight">@android:color/holo_green_light</item>
+
+        <!-- The rest of your attributes -->
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+</resources>
