@@ -1,5 +1,8 @@
 package com.nurakanbpo.saffersmall;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,8 +14,8 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -21,9 +24,11 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nurakanbpo.saffersmall.adapters.LeftDrawerListAdapter;
 
 public class MainActivity extends ActionBarActivity {
 	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerListView;
 	private ActionBarDrawerToggle mDrawerToggle;
 	public static String HOME_API = "https://saffersmall.com/";
 	public static String SEARCH = HOME_API+"search";
@@ -32,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
 	public static DisplayImageOptions options;
 	public static ImageLoaderConfiguration config;
 	public static TextView msgTextView;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +76,17 @@ public class MainActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		mDrawerToggle.syncState();
-
+		
+		
+		mDrawerListView = (ListView) findViewById(R.id.left_drawer);
+		String[] leftDrawerMenuItems = new String[] {"Home", "Login", "Register", "Blog", "Advertising", "", "About", "Contact Us", "", "Privacy Policy", "Terms & Conditions"};
+		
+		List<String> leftDrawerMenuList = new ArrayList<String>();
+		for(int i=0; i<leftDrawerMenuItems.length; i++)
+			leftDrawerMenuList.add(leftDrawerMenuItems[i]);
+		LeftDrawerListAdapter leftDrawerListAdapter = new LeftDrawerListAdapter(this, leftDrawerMenuList);
+		mDrawerListView.setAdapter(leftDrawerListAdapter);
+		
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, new FragmentHome()).commit();
 
@@ -102,10 +118,10 @@ public class MainActivity extends ActionBarActivity {
 //			Toast.makeText(this, "clicked search", Toast.LENGTH_SHORT).show();
 //			return true;
 //		} else 
-			if (id == R.id.action_settings) {
-			Toast.makeText(this, "clicked settings", Toast.LENGTH_SHORT).show();
-			return true;
-		}
+//			if (id == R.id.action_settings) {
+//			Toast.makeText(this, "clicked settings", Toast.LENGTH_SHORT).show();
+//			return true;
+//		}
 
 		return super.onOptionsItemSelected(item);
 	}
